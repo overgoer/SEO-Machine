@@ -72,7 +72,8 @@ def run_all_agents(topic, source_content, target_keywords="", internal_links="")
         "- Add external links to authoritative sources where technologies are mentioned\n"
         "- Keep all practical examples, curl commands, and CTA for {PRODUCT_NAME}\n"
         "- Preserve the same overall structure and word count (~1500-2500 words)\n"
-        "- Do NOT cut substance when fixing"
+        "- Do NOT cut substance when fixing\n"
+        "Return ONLY the revised article body as plain markdown -- no YAML frontmatter, no JSON, no commentary."
     )
     results["article"] = run_agent("editor", revision_input)
     article = results["article"]

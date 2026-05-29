@@ -111,13 +111,14 @@ def extract_meta(text):
 
 
 def extract_article_body(md_text):
-    """Strip YAML frontmatter and trailing sections (SEO Report, Meta, etc)."""
+    """Strip all YAML frontmatter blocks and trailing sections (SEO Report, etc)."""
     body = md_text
-    if body.startswith("---"):
+    while body.startswith("---"):
         parts = body.split("---", 2)
         if len(parts) >= 3:
             body = parts[2]
-    # Cut at delineators that separate article from report sections
+        else:
+            break
     for sep in ("\n---\n## SEO Report", "\n---\n## Meta Options",
                 "\n---\n## Internal Links", "\n---\n## Keyword Analysis"):
         idx = body.find(sep)
