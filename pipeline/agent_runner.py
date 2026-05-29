@@ -5,12 +5,11 @@ from config import AGENTS_DIR, MODEL_CONFIG, PROMPT_VARS
 
 
 def inject_vars(text):
-    """Replace {VARIABLE_NAME} placeholders with values from PROMPT_VARS."""
-    try:
-        return text.format(**PROMPT_VARS)
-    except KeyError as e:
-        print("  Warning: unknown prompt variable " + str(e) + " left as-is", flush=True)
-        return text
+    """Replace {VARIABLE_NAME} placeholders with values from PROMPT_VARS.
+    Uses simple replacement (not .format()) so JSON braces in prompts are safe."""
+    for key, val in PROMPT_VARS.items():
+        text = text.replace("{" + key + "}", val)
+    return text
 
 
 def load_agent_prompt(agent_name):
