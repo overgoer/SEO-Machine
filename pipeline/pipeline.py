@@ -18,13 +18,27 @@ def slugify(text):
     return re.sub(r"[^a-z0-9]+", "-", text.lower()).strip("-")
 
 def extract_meta(text):
+    """Parse meta fields from agent output. Tries multiple formats."""
     meta = {"title": "", "description": "", "keywords": ""}
-    m = re.search(r"Meta Title[:\s]+(.+)", text)
+
+    # Format 1: explicit "Meta Title:" / "Meta Description:" / "Primary Keyword:" lines
+    m = re.search(r"Meta Title:\s*(.+)", text)
     if m: meta["title"] = m.group(1).strip()
-    m = re.search(r"Meta Description[:\s]+(.+)", text)
+    m = re.search(r"Meta Description:\s*(.+)", text)
     if m: meta["description"] = m.group(1).strip()
-    m = re.search(r"Primary Keyword[:\s]+(.+)", text)
+    m = re.search(r"Primary Keyword:\s*(.+)", text)
     if m: meta["keywords"] = m.group(1).strip()
+
+    # Format 2: "Recommended" title from Meta Creator options
+    if not meta["title"]:
+        m = re.search(r"\*\*🏆 RECOMMENDED\*\*.*?\n\*\*Title\*\*:\s*(.+)", text, re.DOTALL)
+        if m: meta["title"] = m.group(1).strip().rstrip(",").split("\n")[0][:80]
+
+    # Format 3: fallback — first "Title:" line with reasonable content
+    if not meta["title"]:
+        m = re.search(r"Title:\s*(.+)", text)
+        if m: meta["title"] = m.group(1).strip()[:80]
+
     return meta
 
 def sep():
