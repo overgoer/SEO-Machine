@@ -113,7 +113,8 @@ def extract_meta(text):
 def extract_article_body(md_text):
     """Strip all YAML frontmatter blocks and trailing sections (SEO Report, etc)."""
     body = md_text
-    while body.startswith("---"):
+    while body.lstrip("\n").startswith("---"):
+        body = body.lstrip("\n")
         parts = body.split("---", 2)
         if len(parts) >= 3:
             body = parts[2]
