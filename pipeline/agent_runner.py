@@ -37,29 +37,55 @@ def run_agent(agent_name, user_content, extra_instructions=""):
 
 def run_all_agents(topic, source_content, target_keywords="", internal_links=""):
     results = {}
-    print("  [1/5] Editor -- writing article...", flush=True)
+
+    print("  [1/6] Editor -- writing article...", flush=True)
     editor_input = (
         "Topic: " + topic + "\n"
         "Source content: " + source_content + "\n"
         "Target keywords: " + target_keywords + "\n\n"
         "Write a comprehensive, actionable article (1500-2500 words) "
-        "for QA engineers and API testers."
+        "for QA engineers and API testers.\n"
+        "SEO requirements (apply during writing):\n"
+        "- Primary keyword density: ~0.5-1% (appear every 100-200 words)\n"
+        "- Every H2 heading MUST contain the primary keyword or a close variant\n"
+        "- Primary keyword must appear in the first 100 words\n"
+        "- Add hyperlinks to authoritative sources (RFCs, official docs) "
+        "when technologies are mentioned\n"
+        "- Naturally reference {SITE_NAME} and {PRODUCT_NAME} ({PRODUCT_DESC}) "
+        "where contextually relevant\n"
+        "- Include CTA linking to {PRODUCT_URL}"
     )
     results["article"] = run_agent("editor", editor_input)
     article = results["article"]
 
-    print("  [2/5] SEO Optimizer -- optimizing...", flush=True)
+    print("  [2/6] SEO Optimizer -- optimizing...", flush=True)
     results["seo_report"] = run_agent("seo-optimizer", article)
 
-    print("  [3/5] Meta Creator -- generating meta tags...", flush=True)
+    print("  [3/6] Editor -- revision based on SEO report...", flush=True)
+    revision_input = (
+        "You wrote this article:\n\n" + article + "\n\n"
+        "Your SEO Optimizer produced this report. Address ALL issues:\n\n"
+        + results["seo_report"] + "\n\n"
+        "Requirements:\n"
+        "- Increase primary keyword density to ~0.5-1%\n"
+        "- Include primary keyword in ALL H2 headings\n"
+        "- Add external links to authoritative sources where technologies are mentioned\n"
+        "- Keep all practical examples, curl commands, and CTA for {PRODUCT_NAME}\n"
+        "- Preserve the same overall structure and word count (~1500-2500 words)\n"
+        "- Do NOT cut substance when fixing"
+    )
+    results["article"] = run_agent("editor", revision_input)
+    article = results["article"]
+
+    print("  [4/6] Meta Creator -- generating meta tags...", flush=True)
     results["meta"] = run_agent("meta-creator",
         "Article:\n" + article + "\n\nTarget keywords: " + target_keywords)
 
-    print("  [4/5] Internal Linker -- building links...", flush=True)
+    print("  [5/6] Internal Linker -- building links...", flush=True)
     results["links"] = run_agent("internal-linker",
         "Article:\n" + article + "\n\nInternal links: " + internal_links)
 
-    print("  [5/5] Keyword Mapper -- final keyword check...", flush=True)
+    print("  [6/6] Keyword Mapper -- final keyword check...", flush=True)
     results["keywords"] = run_agent("keyword-mapper",
         "Article:\n" + article + "\n\nTarget keywords: " + target_keywords)
 
