@@ -72,7 +72,6 @@ HTML_TEMPLATE = """<!DOCTYPE html>
   </div>
   <div class="article-wrap">
     <div class="article-body">
-      <h1>{TITLE}</h1>
       <div class="article-meta">{DATE} &middot; {WORDS} слов</div>
       {CONTENT}
     </div>
