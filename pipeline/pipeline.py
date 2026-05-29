@@ -246,6 +246,14 @@ def main():
             mt = datetime.fromtimestamp(f.stat().st_mtime).strftime("%Y-%m-%d %H:%M")
             print("  " + f.name + "  (" + str(sz) + "KB, " + mt + ")")
         return
+    if args.html_only:
+        topic = args.topic
+        if not topic:
+            p.print_help()
+            print("\nError: --topic required with --html-only")
+            sys.exit(1)
+        run_pipeline(topic, "", args.keywords, args.links, args.publish, args.html_only)
+        return
     if args.file:
         src = Path(args.file).read_text()
         topic = args.topic or Path(args.file).stem
