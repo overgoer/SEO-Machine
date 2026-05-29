@@ -230,7 +230,20 @@ def run_pipeline(topic, source_content, keywords="", internal_links="", publish=
     sep()
 
     if publish:
-        print("  Publish not yet implemented for static HTML; deploy via deploy.sh")
+        import subprocess
+        remote_path = "/var/www/eddytester.com/"
+        filename = slug + "-" + date + ".html"
+        cmd = ["rsync", "-avz", str(html_file), "timeweb:" + remote_path + filename]
+        sep()
+        print("  Deploying to Timeweb...")
+        result = subprocess.run(cmd, capture_output=True, text=True)
+        if result.returncode == 0:
+            print("  Published: https://eddytester.com/" + filename)
+        else:
+            print("  Deploy failed:")
+            for line in result.stderr.split("\n"):
+                if line.strip():
+                    print("    " + line.strip())
 
 
 def main():
