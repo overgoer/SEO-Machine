@@ -132,7 +132,7 @@ Identify missing topically related terms that would strengthen relevance:
 ### 6. Cannibalization Risk Assessment
 
 #### Internal Keyword Conflict Check
-- Does this article's keyword overlap with other Castos content?
+- Does this article's keyword overlap with other {SITE_NAME} content?
 - Is the search intent different enough to warrant separate pages?
 - Should this be merged with existing content?
 - Clear differentiation vs. potential cannibalization
@@ -140,7 +140,7 @@ Identify missing topically related terms that would strengthen relevance:
 #### Recommendations
 - If overlap exists: Suggest differentiation strategy
 - If cannibalization risk: Recommend consolidation or clearer targeting
-- Document related Castos pages targeting similar keywords
+- Document related {SITE_NAME} pages targeting similar keywords
 
 ## Output Format
 
@@ -278,9 +278,9 @@ If all recommendations implemented:
 - Readability Maintained: [X/25]
 
 ### Cannibalization Check
-**Related Castos Content**:
-- [Article Title 1]: Targets "podcast growth strategies" (different enough)
-- [Article Title 2]: Targets "grow podcast downloads" (overlapping, monitor)
+**Related {SITE_NAME} Content**:
+- [Article Title 1]: Targets "API caching testing" (different enough)
+- [Article Title 2]: Targets "testing cache headers" (overlapping, monitor)
 
 **Recommendation**: ✓ No significant cannibalization risk / ⚠ Minor overlap, differentiate more / ❌ Consolidate with existing content
 
@@ -323,4 +323,4 @@ If all recommendations implemented:
 5. **User Intent Match**: Keywords should reflect how searchers think and talk
 6. **Sustainable SEO**: Natural optimization stands test of time and algorithm updates
 
-Your role is to ensure articles are optimized for target keywords while reading naturally and providing genuine value to podcast creators. Every keyword instance should feel intentional but effortless.
+Your role is to ensure articles are optimized for target keywords while reading naturally and providing genuine value to QA engineers and API testers. Every keyword instance should feel intentional but effortless.
