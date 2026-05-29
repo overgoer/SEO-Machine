@@ -36,33 +36,33 @@ HTML_TEMPLATE = """<!DOCTYPE html>
   <link rel="stylesheet" href="css/custom.css" />
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&subset=latin,cyrillic" rel="stylesheet" />
   <style>
-    *, *::before, *::after { box-sizing: border-box; }
-    body { margin: 0; padding: 0; background: #fafafa; font-family: "Montserrat", Arial, sans-serif; }
-    .article-top { background: #1a1a1a; padding: 14px 20px; text-align: center; }
-    .article-top a { color: #aaa; text-decoration: none; font-size: 13px; padding: 0 14px; transition: color 0.2s; }
-    .article-top a:hover { color: #036cff; }
-    .article-wrap { max-width: 780px; margin: 0 auto; padding: 40px 24px 60px; }
-    .article-body { font-size: 16px; line-height: 1.8; color: #222; }
-    .article-body h1 { font-size: 30px; font-weight: 700; margin: 0 0 12px; color: #111; line-height: 1.3; }
-    .article-body h2 { font-size: 22px; font-weight: 600; margin: 36px 0 14px; color: #111; line-height: 1.4; }
-    .article-body h3 { font-size: 18px; font-weight: 600; margin: 28px 0 10px; color: #222; }
-    .article-body p { margin: 0 0 16px; }
-    .article-body a { color: #036cff; text-decoration: none; }
-    .article-body a:hover { text-decoration: underline; }
-    .article-body code { background: #f0f0f0; padding: 2px 7px; border-radius: 3px; font-size: 0.9em; }
-    .article-body pre { background: #1a1a2e; color: #e4e4e4; padding: 18px 20px; border-radius: 8px; overflow-x: auto; font-size: 14px; line-height: 1.6; margin: 0 0 16px; }
-    .article-body pre code { background: none; padding: 0; color: inherit; font-size: inherit; }
-    .article-body ul, .article-body ol { margin: 0 0 16px; padding-left: 24px; }
-    .article-body li { margin: 0 0 6px; }
-    .article-body blockquote { border-left: 4px solid #036cff; margin: 0 0 16px; padding: 10px 18px; background: #f0f6ff; color: #333; }
-    .article-body hr { border: none; border-top: 1px solid #e0e0e0; margin: 32px 0; }
-    .article-meta { color: #888; font-size: 13px; margin-bottom: 28px; letter-spacing: 0.3px; }
-    .article-footer { margin-top: 44px; padding-top: 24px; border-top: 1px solid #e0e0e0; text-align: center; font-size: 13px; color: #888; }
-    .article-footer a { color: #036cff; }
-    img { max-width: 100%; height: auto; border-radius: 6px; margin: 16px 0; }
-    table { border-collapse: collapse; width: 100%; margin: 0 0 16px; font-size: 14px; }
-    th, td { border: 1px solid #ddd; padding: 8px 12px; text-align: left; }
-    th { background: #f5f5f5; font-weight: 600; }
+    *, *::before, *::after {{ box-sizing: border-box; }}
+    body {{ margin: 0; padding: 0; background: #fafafa; font-family: "Montserrat", Arial, sans-serif; }}
+    .article-top {{ background: #1a1a1a; padding: 14px 20px; text-align: center; }}
+    .article-top a {{ color: #aaa; text-decoration: none; font-size: 13px; padding: 0 14px; transition: color 0.2s; }}
+    .article-top a:hover {{ color: #036cff; }}
+    .article-wrap {{ max-width: 780px; margin: 0 auto; padding: 40px 24px 60px; }}
+    .article-body {{ font-size: 16px; line-height: 1.8; color: #222; }}
+    .article-body h1 {{ font-size: 30px; font-weight: 700; margin: 0 0 12px; color: #111; line-height: 1.3; }}
+    .article-body h2 {{ font-size: 22px; font-weight: 600; margin: 36px 0 14px; color: #111; line-height: 1.4; }}
+    .article-body h3 {{ font-size: 18px; font-weight: 600; margin: 28px 0 10px; color: #222; }}
+    .article-body p {{ margin: 0 0 16px; }}
+    .article-body a {{ color: #036cff; text-decoration: none; }}
+    .article-body a:hover {{ text-decoration: underline; }}
+    .article-body code {{ background: #f0f0f0; padding: 2px 7px; border-radius: 3px; font-size: 0.9em; }}
+    .article-body pre {{ background: #1a1a2e; color: #e4e4e4; padding: 18px 20px; border-radius: 8px; overflow-x: auto; font-size: 14px; line-height: 1.6; margin: 0 0 16px; }}
+    .article-body pre code {{ background: none; padding: 0; color: inherit; font-size: inherit; }}
+    .article-body ul, .article-body ol {{ margin: 0 0 16px; padding-left: 24px; }}
+    .article-body li {{ margin: 0 0 6px; }}
+    .article-body blockquote {{ border-left: 4px solid #036cff; margin: 0 0 16px; padding: 10px 18px; background: #f0f6ff; color: #333; }}
+    .article-body hr {{ border: none; border-top: 1px solid #e0e0e0; margin: 32px 0; }}
+    .article-meta {{ color: #888; font-size: 13px; margin-bottom: 28px; letter-spacing: 0.3px; }}
+    .article-footer {{ margin-top: 44px; padding-top: 24px; border-top: 1px solid #e0e0e0; text-align: center; font-size: 13px; color: #888; }}
+    .article-footer a {{ color: #036cff; }}
+    img {{ max-width: 100%; height: auto; border-radius: 6px; margin: 16px 0; }}
+    table {{ border-collapse: collapse; width: 100%; margin: 0 0 16px; font-size: 14px; }}
+    th, td {{ border: 1px solid #ddd; padding: 8px 12px; text-align: left; }}
+    th {{ background: #f5f5f5; font-weight: 600; }}
   </style>
 </head>
 <body>
