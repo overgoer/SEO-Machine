@@ -33,9 +33,20 @@
 
 ### [TODO] Ключевые слова и спрос
 - [ ] Serper API — сбор ключей по нише API testing/QA
-- [ ] Yandex Wordstat — интеграция через MCP сервер или Python
+- [ ] Yandex Wordstat — получен OAuth-токен
+- [ ] Wordstat — интеграция через MCP сервер или Python
 - [ ] Фильтрация: search volume + конкуренция
 - [ ] Сформировать очередь из 10-20 тем с данными о спросе
+
+### [IN PROGRESS] MCP-ресерчер (отдельный сервис)
+- [ ] Создать репозиторий /root/research-mcp/
+- [ ] Инструмент serper_search — поиск, ключи, объём
+- [ ] Инструмент serper_keywords — связанные запросы
+- [ ] Инструмент wordstat_top — частотность (после токена)
+- [ ] Инструмент wordstat_dynamics — тренды по месяцам
+- [ ] Сервер на FastMCP (Python), запуск через systemd
+- [ ] Прикрутить к SEO Machine как шаг Research
+- [ ] Научить работать из любой Claude-сессии на сервере
 
 ### [TODO] Инфраструктура
 - [ ] Исправить ContentScorer (numpy/scipy compatibility)
